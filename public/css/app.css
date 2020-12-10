@@ -5,6 +5,11 @@ Document
 ========
 */
 
+
+/*nav css*/
+.logoNav {width: 5%;}
+/*nav css*/
+
 /**
 Use a better box model (opinionated).
 */
@@ -47,7 +52,6 @@ Remove the margin in all browsers.
 body {
   margin: 0;
 }
-
 /**
 Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3)
 */

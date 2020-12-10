@@ -1,4 +1,9 @@
-/* ./resources/css/app.css */
+/* ./resources/css/main.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/*nav css*/
+.logoNav {width: 5%;}
+/*nav css*/
