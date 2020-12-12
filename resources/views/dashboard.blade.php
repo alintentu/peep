@@ -18,10 +18,9 @@
 
                 <div class="border border-gray-300 rounded-lg">
 
-                    @include ('layouts.tweet')
-                    @include ('layouts.tweet')
-                    @include ('layouts.tweet')
-                    @include ('layouts.tweet')
+                    @foreach ($tweets as $tweet)
+                        @include ('layouts.tweet')
+                    @endforeach
 
                 </div>
             </div>

@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Models\Tweet;
+use App\Models\User;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,8 +20,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::post('/tweets', [TweetsController::class, 'store']);
+Route::post('/tweets', 'App\Http\Controllers\TweetsController@store');
+
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('dashboard', [
+        'tweets' => auth()->user()->timeline()
+    ]);
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
