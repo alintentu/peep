@@ -20,14 +20,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::post('/tweets', [TweetsController::class, 'store']);
-Route::post('/tweets', 'App\Http\Controllers\TweetsController@store');
+Route::middleware(['auth'])->group(function () {
+    // Route::get('/tweets', [TweetsController::class, 'index']);
+    Route::get('/tweets', 'App\Http\Controllers\TweetsController@index')->name('home');
+    Route::post('/tweets', 'App\Http\Controllers\TweetsController@store');
+});
 
-Route::get('/dashboard', function () {
-    return view('dashboard', [
-        'tweets' => auth()->user()->timeline()
-    ]);
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/tweets', 'App\Http\Controllers\TweetsController@index')->name('dashboard');
+// Route::post('/tweets', 'App\Http\Controllers\TweetsController@store');
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard', [
+//         'tweets' => auth()->user()->timeline()
+//     ]);
+// })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 

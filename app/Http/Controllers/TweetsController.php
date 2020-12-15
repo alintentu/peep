@@ -5,9 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Tweet;
+use App\Models\User;
 
 class TweetsController extends Controller
 {
+    public function index()
+    {
+        return view('tweets.index', [
+            'tweets' => auth()->user()->timeline()
+        ]);
+    }
+
     public function store()
     {
         $attributes = request()->validate([
@@ -19,6 +27,6 @@ class TweetsController extends Controller
             'body' => $attributes['body']
         ]);
 
-        return redirect('/dashboard');
+        return redirect('/tweets');
     }
 }
