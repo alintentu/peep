@@ -24,10 +24,10 @@ Route::middleware(['auth'])->group(function () {
     // Route::get('/tweets', [TweetsController::class, 'index']);
     Route::get('/tweets', 'App\Http\Controllers\TweetsController@index')->name('home');
     Route::post('/tweets', 'App\Http\Controllers\TweetsController@store');
-});
 
-// Route::get('/tweets', 'App\Http\Controllers\TweetsController@index')->name('dashboard');
-// Route::post('/tweets', 'App\Http\Controllers\TweetsController@store');
+});
+Route::get('/profiles/{user}', 'App\Http\Controllers\ProfilesController@show')->name('profile');
+
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard', [
