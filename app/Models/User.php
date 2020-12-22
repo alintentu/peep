@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, Followable;
 
     /**
      * The attributes that are mass assignable.
@@ -63,23 +63,13 @@ class User extends Authenticatable
         return $this->hasMany(Tweet::class)->latest();
     }
 
-    public function follow(User $user)
-    {
-        return $this->follows()->save($user);
-    }
-
-    public function follows()
-    {
-        return $this->belongsToMany(
-            User::class,
-            'follows', 
-            'user_id', 
-            'following_user_id'
-        );
-    }
-
     public function getRouteKeyName()
     {
         return 'name';
+    }
+
+    public function path()
+    {
+        return route('profile', $this->name);
     }
 }

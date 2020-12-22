@@ -25,9 +25,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/tweets', 'App\Http\Controllers\TweetsController@index')->name('home');
     Route::post('/tweets', 'App\Http\Controllers\TweetsController@store');
 
-});
-Route::get('/profiles/{user}', 'App\Http\Controllers\ProfilesController@show')->name('profile');
+    Route::post('/profiles/{user:name}/follow', 'App\Http\Controllers\FollowsController@store');
 
+});
+Route::get('/profiles/{user:name}', 'App\Http\Controllers\ProfilesController@show')->name('profile');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard', [
